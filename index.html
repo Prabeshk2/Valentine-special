@@ -14,7 +14,6 @@ background:black;
 overflow:hidden;
 }
 
-/* Buttons */
 button{
 border:none;
 border-radius:30px;
@@ -24,7 +23,7 @@ font-size:16px;
 box-shadow:0 0 15px rgba(255,105,180,0.8);
 }
 
-/* ---------- Opening ---------- */
+/* ---------- Opening Page ---------- */
 #opening{
 display:flex;
 justify-content:center;
@@ -39,48 +38,52 @@ text-align:center;
 position:fixed;
 bottom:-20px;
 font-size:18px;
-color:rgba(255,105,180,0.8);
-animation: floatUp linear infinite;
+animation:floatUp linear infinite;
 }
+
 @keyframes floatUp{
 from{transform:translateY(0);opacity:0;}
 10%{opacity:1;}
 to{transform:translateY(-110vh);opacity:0;}
 }
 
-.card{
+#opening .card{
 background:rgba(255,255,255,0.08);
-backdrop-filter: blur(6px);
-padding:35px 30px;
+padding:35px;
 border-radius:20px;
 box-shadow:0 0 25px rgba(255,20,147,0.6);
-max-width:360px;
 }
 
 #type{font-size:20px;min-height:60px}
 
 /* ---------- About ---------- */
-#about{display:none;text-align:center;padding:40px;font-family:cursive}
+#about{display:none;text-align:center;font-family:cursive;padding:40px}
 
 /* ---------- Collage ---------- */
-#collagePage{display:none;text-align:center;overflow-y:auto;height:100vh}
+#collagePage{
+display:none;
+text-align:center;
+overflow-y:auto;
+max-height:calc(100vh - 150px);
+padding-bottom:40px;
+}
 
 .collage{
 width:90%;
 max-width:950px;
 margin:40px auto;
 display:grid;
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(10,1fr);
 gap:10px;
+place-items:center;
 }
 
 .collage img{
-width:100%;
+width:100px;
 height:140px;
 object-fit:cover;
 border-radius:12px;
 cursor:pointer;
-box-shadow:0 0 12px rgba(255,105,180,0.6);
 }
 
 .viewer{
@@ -93,23 +96,71 @@ justify-content:center;
 align-items:center;
 z-index:9999;
 }
-.viewer img{max-width:90%;max-height:90%}
+.viewer img{max-width:90%;max-height:90%;border-radius:15px}
+
+.surprise-btn{
+position:sticky;
+bottom:20px;
+margin:30px auto 0;
+display:block;
+background:pink;
+}
 
 /* ---------- Surprise ---------- */
 #surprise{display:none;text-align:center}
 .envelope{
 width:200px;height:130px;
 background:#ffb6c1;
-margin:100px auto;
 border-radius:10px;
+margin:100px auto;
 cursor:pointer;
 }
-.bouquet{display:none;margin-top:20px}
+
+.bouquet{
+display:none;
+width:80%;
+max-width:350px;
+margin:20px auto;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:#8b0000;
+padding:20px;
+border-radius:15px;
+animation:pop 0.8s ease;
+}
+
+@keyframes pop{
+from{transform:scale(0.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
 
 /* ---------- Letter ---------- */
-#letterPage{display:none;padding:30px;text-align:center}
+#letterPage{
+display:none;
+padding:30px;
+background:radial-gradient(circle at top,#2b000f,#000);
+font-family:Algerian;
+}
+.letterBox{
+max-width:800px;
+margin:auto;
+font-size:12px;
+line-height:1.9;
+text-align:center;
+background:rgba(255,182,193,0.08);
+padding:30px;
+border-radius:25px;
+}
 
-/* ---------- Final ---------- */
+.final-btn{
+position:fixed;
+bottom:70px;
+left:50%;
+transform:translateX(-50%);
+background:linear-gradient(45deg,#ff3366,#ff69b4);
+color:white;
+}
+
+/* ---------- Final Page ---------- */
 #finalPage{
 display:none;
 height:100vh;
@@ -118,13 +169,14 @@ align-items:center;
 text-align:center;
 background:radial-gradient(circle at top,#3a0014,#000);
 }
+
 .final-box{
 background:rgba(255,255,255,0.08);
-padding:30px;
+padding:35px;
 border-radius:25px;
 }
 
-/* ---------- GIFT PAGE ---------- */
+/* ---------- Gift Page ---------- */
 #giftPage{
 display:none;
 height:100vh;
@@ -132,102 +184,95 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 background:radial-gradient(circle at top,#3a0014,#000);
-overflow:hidden;
-}
-
-.gift-box{
 position:relative;
-width:160px;
-height:120px;
-background:#ff4d88;
-border-radius:12px;
-cursor:pointer;
-animation: heartbeat 1.2s infinite;
-}
-
-.ribbon{
-position:absolute;
-width:100%;
-height:20px;
-background:white;
-top:45px;
-}
-
-.lid{
-position:absolute;
-width:170px;
-height:35px;
-background:#ff6fa3;
-top:-35px;
-left:-5px;
-border-radius:10px;
-transition:0.6s;
-}
-
-.open .lid{
-transform:rotate(-40deg) translateY(-40px);
-}
-
-@keyframes heartbeat{
-0%{transform:scale(1)}
-25%{transform:scale(1.1)}
-50%{transform:scale(1)}
-75%{transform:scale(1.15)}
-100%{transform:scale(1)}
-}
-
-/* Gifts flying */
-.gift-item{
-position:absolute;
-font-size:22px;
-opacity:0;
-animation: fly 1.5s forwards;
-}
-
-@keyframes fly{
-0%{transform:translate(0,0) scale(.2);opacity:0}
-100%{transform:translate(var(--x),var(--y)) scale(1);opacity:1}
+overflow:hidden;
 }
 
 /* Sparkles */
 .sparkle{
-position:fixed;
-width:3px;height:3px;
+position:absolute;
+width:4px;
+height:4px;
 background:pink;
 border-radius:50%;
-animation: sparkle 1.2s infinite alternate;
+animation:blink 1.5s infinite alternate;
 }
-@keyframes sparkle{
-from{opacity:.2;transform:scale(.5)}
-to{opacity:1;transform:scale(1.3)}
+@keyframes blink{
+from{opacity:0.2;transform:scale(0.5);}
+to{opacity:1;transform:scale(1.4);}
 }
 
-/* Popup message */
-.popup{
-position:fixed;
-bottom:50px;
+/* Gift Box */
+.gift-box{
+position:relative;
+width:160px;
+height:140px;
+background:#ff4d88;
+margin:auto;
+cursor:pointer;
+animation:heartbeat 1.2s infinite;
+}
+
+.gift-lid{
+position:absolute;
+width:160px;
+height:40px;
+background:#ff80aa;
+top:-40px;
+left:0;
+transition:0.6s;
+}
+
+.ribbon{
+position:absolute;
+width:20px;
+height:140px;
+background:white;
 left:50%;
 transform:translateX(-50%);
-background:pink;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+/* Gifts Flying */
+.gift-item{
+position:absolute;
+font-size:24px;
+cursor:pointer;
+animation:fly 1s forwards;
+}
+
+@keyframes fly{
+from{transform:translate(0,0);opacity:0;}
+to{transform:translate(var(--x),var(--y));opacity:1;}
+}
+
+/* Message Popup */
+.msgBox{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#ffb6c1;
 color:black;
-padding:12px 20px;
-border-radius:20px;
+padding:20px;
+border-radius:15px;
 display:none;
 z-index:9999;
 }
+
 </style>
 </head>
-
 <body>
 
 <audio id="music" src="music.ogg" loop></audio>
 
 <!-- Opening -->
 <div id="opening">
-<div class="heart-bg">
-<span style="left:10%;animation-duration:8s;">💖</span>
-</div>
-
 <div class="card">
 <div id="type"></div>
 <button onclick="showAbout()">Open my heart 💖</button>
@@ -243,118 +288,83 @@ z-index:9999;
 <!-- Collage -->
 <div id="collagePage">
 <h2>Our Memories</h2>
-
 <div class="collage">
 <img src="photo1.jpeg" onclick="openImg(this)">
 <img src="photo2.jpeg" onclick="openImg(this)">
-<img src="photo3.jpeg" onclick="openImg(this)">
-<img src="photo4.jpeg" onclick="openImg(this)">
-<img src="photo5.jpeg" onclick="openImg(this)">
+</div>
+<button class="surprise-btn" onclick="showSurprise()">Tap for surprise 💞</button>
 </div>
 
-<button onclick="showSurprise()">Surprise 💞</button>
-</div>
-
-<div class="viewer" id="viewer" onclick="this.style.display='none'">
+<div class="viewer" id="viewer" onclick="closeImg()">
 <img id="viewerImg">
 </div>
 
 <!-- Surprise -->
 <div id="surprise">
-<div class="envelope" onclick="openEnvelope()">Click 💌</div>
-
+<div class="envelope" onclick="openEnvelope()">Click Me 💌</div>
 <div class="bouquet" id="bouquet">
-<h2>Happy Valentine ❤️</h2>
+Happy Valentine's My Love 💖
 </div>
-
-<button onclick="showLetter()">Next 😊</button>
+<button onclick="showLetter()">Continue 😊</button>
 </div>
 
 <!-- Letter -->
 <div id="letterPage">
-<h2>Forever Yours ❤️</h2>
-<button onclick="showFinal()">Final Surprise 💖</button>
+<div class="letterBox">
+My Dearest Aashika ❤️
+</div>
+<button class="final-btn" onclick="showFinal()">Final Surprise 💖</button>
 </div>
 
 <!-- Final -->
 <div id="finalPage">
 <div class="final-box">
-<h2>Happy Valentine's Day 💕</h2>
-<button onclick="showGift()">One Last Surprise 🎁</button>
+<h1>Happy Valentine's Day ❤️</h1>
+<button class="final-btn" onclick="showGift()">One Last Surprise 🎁</button>
 </div>
 </div>
 
 <!-- Gift Page -->
 <div id="giftPage">
-<div class="gift-box" id="giftBox" onclick="openGift()">
-<div class="lid"></div>
+<div class="gift-box" onclick="openGift()">
+<div class="gift-lid" id="lid"></div>
 <div class="ribbon"></div>
 </div>
 </div>
 
-<div class="popup" id="popup"></div>
+<div class="msgBox" id="msgBox"></div>
 
 <script>
 const music=document.getElementById("music");
-document.body.addEventListener('click',()=>{ if(music.paused) music.play(); },{once:true});
+document.body.addEventListener('click',()=>{
+if(music.paused) music.play();
+},{once:true});
 
-/* Typewriter */
-let text="Welcome to the world of love";
+const text="Welcome to the world of love";
 let i=0;
-setInterval(()=>{ if(i<text.length){document.getElementById("type").innerHTML+=text[i++]}},70);
+setInterval(()=>{
+if(i<text.length){
+document.getElementById("type").innerHTML+=text[i];
+i++;
+}
+},70);
 
-/* Navigation */
 function showAbout(){opening.style.display="none";about.style.display="block";}
 function showCollage(){about.style.display="none";collagePage.style.display="block";}
 function showSurprise(){collagePage.style.display="none";surprise.style.display="block";}
 function openEnvelope(){document.querySelector(".envelope").style.display="none";bouquet.style.display="block";}
 function showLetter(){surprise.style.display="none";letterPage.style.display="block";}
 function showFinal(){letterPage.style.display="none";finalPage.style.display="flex";}
-function showGift(){finalPage.style.display="none";giftPage.style.display="flex";startSparkles();}
+function showGift(){finalPage.style.display="none";giftPage.style.display="flex";createSparkles();}
 
-/* Viewer */
 function openImg(img){
 viewer.style.display="flex";
 viewerImg.src=img.src;
 }
+function closeImg(){viewer.style.display="none";}
 
-/* Gift Opening */
-const gifts=[
-{icon:"🌹",msg:"Roses for my beautiful love"},
-{icon:"🍫",msg:"Sweet chocolates for your sweetness"},
-{icon:"🧸",msg:"Teddy hug from me"},
-{icon:"💍",msg:"Promise to love forever"},
-{icon:"🍰",msg:"Sweet memories together"}
-];
-
-function openGift(){
-let box=document.getElementById("giftBox");
-box.classList.add("open");
-
-gifts.forEach((g,index)=>{
-let d=document.createElement("div");
-d.className="gift-item";
-d.innerHTML=g.icon;
-d.style.setProperty('--x',(Math.random()*300-150)+'px');
-d.style.setProperty('--y',(Math.random()*-250-80)+'px');
-d.style.animationDelay=index*.2+'s';
-
-d.onclick=()=>showPopup(g.msg);
-
-box.appendChild(d);
-});
-}
-
-/* Popup */
-function showPopup(text){
-let p=document.getElementById("popup");
-p.innerHTML=text;
-p.style.display="block";
-setTimeout(()=>p.style.display="none",2500);
-}
-
-/* Sparkles only gift page */
-function startSparkles(){
+/* Sparkles */
+function createSparkles(){
 for(let i=0;i<40;i++){
 let s=document.createElement("div");
 s.className="sparkle";
@@ -363,6 +373,44 @@ s.style.left=Math.random()*100+"%";
 giftPage.appendChild(s);
 }
 }
+
+/* Gift Opening */
+function openGift(){
+document.getElementById("lid").style.transform="rotate(-120deg) translateY(-60px)";
+spawnGifts();
+}
+
+/* Gifts + Messages */
+const gifts=[
+{emoji:"🌹",msg:"Roses for your beauty ❤️"},
+{emoji:"🍫",msg:"Sweet chocolates for my sweet girl 🍫"},
+{emoji:"🧸",msg:"Teddy to hug when I'm not there 🧸"},
+{emoji:"💍",msg:"Promise of forever 💍"},
+{emoji:"🍰",msg:"Sweet memories cake 🍰"},
+{emoji:"💌",msg:"My love letter always for you 💌"}
+];
+
+function spawnGifts(){
+gifts.forEach((g,i)=>{
+let el=document.createElement("div");
+el.className="gift-item";
+el.innerHTML=g.emoji;
+el.style.setProperty("--x",(Math.random()*300-150)+"px");
+el.style.setProperty("--y",(Math.random()*-250-50)+"px");
+
+el.onclick=()=>showMsg(g.msg);
+
+giftPage.appendChild(el);
+});
+}
+
+function showMsg(t){
+let m=document.getElementById("msgBox");
+m.innerText=t;
+m.style.display="block";
+setTimeout(()=>m.style.display="none",2500);
+}
+
 </script>
 
 </body>
